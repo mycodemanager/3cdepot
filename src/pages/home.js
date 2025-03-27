@@ -10,16 +10,16 @@ export function renderHome() {
       <div class="relative bg-gray-900 h-[60vh]">
         <div class="absolute inset-0">
           <img src="https://www-cdn.djiits.com/cms/uploads/ff6ae7f2efed6d80de477f6a634d6c4b.png" 
-               class="w-full h-full object-cover opacity-50" alt="Hero">
+               class="w-full h-full object-cover opacity-50" alt="DJI Mavic 3 Pro">
           <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent"></div>
         </div>
         <div class="relative max-w-7xl mx-auto pt-24 pb-16 px-4 sm:px-6 lg:px-8 flex h-full items-center">
           <div class="text-white">
             <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">
-              Premium Electronics at Your Fingertips
+              Premium DJI Drones
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 max-w-2xl">
-              Discover the latest in drone technology and consumer electronics
+              Discover the latest in professional drone technology
             </p>
           </div>
         </div>
@@ -57,33 +57,33 @@ export function renderHome() {
 
       <!-- Categories Section -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Shop by Category</h2>
+        <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Featured Drones</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="relative rounded-lg overflow-hidden h-64 group">
             <img src="https://www-cdn.djiits.com/cms/uploads/ff6ae7f2efed6d80de477f6a634d6c4b.png" 
-                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Drones">
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="DJI Mavic 3 Pro">
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Drones</h3>
-              <p class="text-gray-200">Professional aerial photography</p>
+              <h3 class="text-2xl font-bold text-white mb-2">Professional</h3>
+              <p class="text-gray-200">High-end camera drones</p>
             </div>
           </div>
           <div class="relative rounded-lg overflow-hidden h-64 group">
-            <img src="/images/iphone15pro.jpg" 
-                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Smartphones">
+            <img src="https://www-cdn.djiits.com/cms/uploads/204e70db1a193ad14c14a61db633dca9.png" 
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="DJI Air 3S">
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Smartphones</h3>
-              <p class="text-gray-200">Latest mobile technology</p>
+              <h3 class="text-2xl font-bold text-white mb-2">Portable</h3>
+              <p class="text-gray-200">Lightweight travel drones</p>
             </div>
           </div>
           <div class="relative rounded-lg overflow-hidden h-64 group">
-            <img src="/images/macbook-pro.jpg" 
-                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="Laptops">
+            <img src="https://www-cdn.djiits.com/cms/uploads/32a4df4ce9e014fa44a38e24cc7fa97e.png" 
+                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" alt="DJI Flip">
             <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-6">
-              <h3 class="text-2xl font-bold text-white mb-2">Laptops</h3>
-              <p class="text-gray-200">Powerful computing</p>
+              <h3 class="text-2xl font-bold text-white mb-2">Foldable</h3>
+              <p class="text-gray-200">Compact smart drones</p>
             </div>
           </div>
         </div>

@@ -1,8 +1,36 @@
+// Store state
 export const state = {
-  products: [],
   cart: [],
-  user: null,
-  inviteCodes: ['3CDEPOT2025'], // Add more invite codes as needed
+  products: [
+    {
+      id: 1,
+      name: 'DJI Mavic 3 Pro',
+      price: 159999,
+      image: 'https://www-cdn.djiits.com/cms/uploads/ff6ae7f2efed6d80de477f6a634d6c4b.png',
+      description: 'Professional Drone with 4/3 CMOS Hasselblad Camera'
+    },
+    {
+      id: 2,
+      name: 'DJI Air 3S',
+      price: 89999,
+      image: 'https://www-cdn.djiits.com/cms/uploads/204e70db1a193ad14c14a61db633dca9.png',
+      description: 'Lightweight and Portable 4K Drone'
+    },
+    {
+      id: 3,
+      name: 'DJI Mini 4 Pro',
+      price: 69999,
+      image: 'https://www-cdn.djiits.com/cms/uploads/892e39b4b76dc5a83b267ed12ce69b97.png',
+      description: 'Ultra-lightweight Sub-250g Drone'
+    },
+    {
+      id: 4,
+      name: 'DJI Flip',
+      price: 79999,
+      image: 'https://www-cdn.djiits.com/cms/uploads/32a4df4ce9e014fa44a38e24cc7fa97e.png',
+      description: 'Foldable Camera Drone with Smart Features'
+    }
+  ],
 
   addToCart(product) {
     const existingItem = this.cart.find(item => item.id === product.id)
@@ -16,7 +44,7 @@ export const state = {
 
   removeFromCart(productId) {
     const index = this.cart.findIndex(item => item.id === productId)
-    if (index !== -1) {
+    if (index > -1) {
       this.cart.splice(index, 1)
       this.updateCartCount()
     }
@@ -25,36 +53,24 @@ export const state = {
   updateQuantity(productId, newQuantity) {
     const item = this.cart.find(item => item.id === productId)
     if (item) {
-      if (newQuantity <= 0) {
-        this.removeFromCart(productId)
-      } else {
+      if (newQuantity > 0) {
         item.quantity = newQuantity
-        this.updateCartCount()
+      } else {
+        this.removeFromCart(productId)
       }
+      this.updateCartCount()
     }
-  },
-
-  getCartTotal() {
-    return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0)
-  },
-
-  getCartCount() {
-    return this.cart.reduce((total, item) => total + item.quantity, 0)
   },
 
   updateCartCount() {
     const cartCount = document.querySelector('#cart-count')
     if (cartCount) {
-      cartCount.textContent = this.getCartCount()
+      const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0)
+      cartCount.textContent = totalItems.toString()
     }
   },
 
-  clearCart() {
-    this.cart = []
-    this.updateCartCount()
-  },
-
-  validateInviteCode(code) {
-    return this.inviteCodes.includes(code)
+  getCartTotal() {
+    return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0)
   }
 }

@@ -14,34 +14,37 @@
       <nav class="bg-white shadow-md fixed w-full z-50">
         <div class="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-20">
-            <div class="flex items-center">
+            <!-- Left section with logo -->
+            <div class="flex-1 flex items-center justify-start">
               <a href="/" class="flex items-center">
                 <span class="text-3xl font-bold text-brand">3cdepot</span>
               </a>
-              <div class="hidden lg:block ml-10">
-                <div class="flex items-baseline space-x-8">
-                  <a href="/" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Home</a>
-                  <a href="#drones" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Drones</a>
-                  <a href="#phones" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Phones</a>
-                  <a href="#laptops" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Laptops</a>
-                </div>
+            </div>
+
+            <!-- Center section with navigation links -->
+            <div class="flex-1 hidden lg:flex items-center justify-center">
+              <div class="flex items-baseline space-x-8">
+                <a href="/" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Home</a>
+                <a href="#professional" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Professional</a>
+                <a href="#portable" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Portable</a>
+                <a href="#foldable" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Foldable</a>
               </div>
             </div>
-            <div class="hidden lg:block">
-              <div class="flex items-center space-x-6">
-                <a href="/login" class="text-gray-900 hover:text-brand text-sm font-medium">Login</a>
-                <a href="/register" class="text-gray-900 hover:text-brand text-sm font-medium">Register</a>
-                <button 
-                  @click="isCartOpen = true" 
-                  class="relative p-2 text-gray-900 hover:text-brand">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  <span id="cart-count" class="absolute -top-1 -right-1 bg-brand text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    0
-                  </span>
-                </button>
-              </div>
+
+            <!-- Right section with auth and cart -->
+            <div class="flex-1 flex items-center justify-end space-x-6">
+              <a href="/login" class="text-gray-900 hover:text-brand text-sm font-medium">Login</a>
+              <a href="/register" class="text-gray-900 hover:text-brand text-sm font-medium">Register</a>
+              <button 
+                @click="isCartOpen = true" 
+                class="relative p-2 text-gray-900 hover:text-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-count" class="absolute -top-1 -right-1 bg-brand text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  0
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -63,9 +66,9 @@
             <div>
               <h3 class="text-lg font-semibold mb-4">Categories</h3>
               <ul class="space-y-2 text-gray-400">
-                <li><a href="#drones" class="hover:text-white">Drones</a></li>
-                <li><a href="#phones" class="hover:text-white">Phones</a></li>
-                <li><a href="#laptops" class="hover:text-white">Laptops</a></li>
+                <li><a href="#professional" class="hover:text-white">Professional</a></li>
+                <li><a href="#portable" class="hover:text-white">Portable</a></li>
+                <li><a href="#foldable" class="hover:text-white">Foldable</a></li>
               </ul>
             </div>
             <div>

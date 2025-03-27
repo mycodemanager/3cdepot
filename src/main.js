@@ -21,23 +21,24 @@ const products = [
     id: 2,
     name: 'DJI Air 3S',
     price: 89999,
-    image: 'https://www-cdn.djiits.com/cms/uploads/204e70db1a193ad14c14a61db633dca9.png',
+    image: 'https://www-cdn.djiits.com/cms/uploads/32a4df4ce9e014fa44a38e24cc7fa97e.png',
     description: 'Lightweight and Portable 4K Drone'
   },
   {
     id: 3,
-    name: 'iPhone 15 Pro',
-    price: 299999,
-    image: '/images/iphone15pro.jpg',
-    description: 'Latest iPhone with A17 Pro chip'
+    name: 'DJI Air 3S',
+    price: 89999,
+    image: 'https://www-cdn.djiits.com/cms/uploads/204e70db1a193ad14c14a61db633dca9.png',
+    description: 'Lightweight and Portable 4K Drone'
   },
   {
     id: 4,
-    name: 'MacBook Pro 14"',
-    price: 499999,
-    image: '/images/macbook-pro.jpg',
-    description: 'M3 Pro chip, 14-inch Liquid Retina XDR display'
+    name: 'DJI Mini 4 Pro',
+    price: 69999,
+    image: 'https://www-cdn.djiits.com/cms/uploads/892e39b4b76dc5a83b267ed12ce69b97.png',
+    description: 'Ultra-lightweight Sub-250g Drone'
   }
+
 ]
 
 // Initialize state
