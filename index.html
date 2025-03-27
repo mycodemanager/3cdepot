@@ -11,18 +11,18 @@
   <body class="bg-gray-50">
     <div id="app" x-data="{ isCartOpen: false, isMenuOpen: false }">
       <!-- Navigation -->
-      <nav class="bg-white shadow-md fixed w-full z-50">
-        <div class="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="bg-white shadow-md sticky top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex items-center justify-between h-20">
             <!-- Left section with logo -->
-            <div class="flex-1 flex items-center justify-start">
+            <div class="flex items-center justify-start">
               <a href="/" class="flex items-center">
                 <img src="/images/logo-text.png" alt="Logo" class="h-5">
               </a>
             </div>
 
             <!-- Center section with navigation links -->
-            <div class="flex-1 hidden lg:flex items-center justify-center">
+            <div class="hidden lg:flex items-center justify-center flex-grow">
               <div class="flex items-baseline space-x-8">
                 <a href="/" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Home</a>
                 <a href="#professional" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Professional</a>
@@ -32,7 +32,7 @@
             </div>
 
             <!-- Right section with auth and cart -->
-            <div class="flex-1 flex items-center justify-end space-x-6">
+            <div class="flex items-center justify-end space-x-6">
               <a href="/login" class="text-gray-900 hover:text-brand text-sm font-medium">Login</a>
               <a href="/register" class="text-gray-900 hover:text-brand text-sm font-medium">Register</a>
               <button 
