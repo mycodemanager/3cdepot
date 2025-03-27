@@ -1,5 +1,6 @@
 import { getCartItems, getCartTotal, processPayment } from '../modules/cart.js'
 import { router } from '../router.js'
+import { isLoggedIn } from '../modules/auth.js'
 
 export function renderCheckout() {
   const content = document.getElementById('content')
@@ -82,12 +83,20 @@ export function renderCheckout() {
     </div>
   `
 
-  // Add event listener for place order button
-  document.getElementById('place-order').addEventListener('click', async () => {
-    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value
-    const button = document.getElementById('place-order')
+  // Handle place order button
+  document.getElementById('place-order').addEventListener('click', async (e) => {
+    e.preventDefault()
     
-    // Disable button and show loading state
+    // 检查用户是否已登录
+    if (!isLoggedIn()) {
+      // 如果未登录，跳转到登录页面
+      router.navigate('/login')
+      return
+    }
+    
+    const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value
+    const button = e.target
+    
     button.disabled = true
     button.innerHTML = `
       <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -96,7 +105,7 @@ export function renderCheckout() {
       </svg>
       Processing...
     `
-
+    
     try {
       const result = await processPayment(paymentMethod)
       // Show success page

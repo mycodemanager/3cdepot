@@ -23,11 +23,11 @@ class Router {
     const path = window.location.pathname
     const renderer = this.routes[path]
     
-    // 检查是否需要登录
-    if (path === '/checkout' && !isLoggedIn()) {
-      this.navigate('/login')
-      return
-    }
+    // 移除结账页面的登录检查，允许未登录用户访问
+    // if (path === '/checkout' && !isLoggedIn()) {
+    //   this.navigate('/login')
+    //   return
+    // }
     
     if (renderer) {
       const content = document.getElementById('content')
