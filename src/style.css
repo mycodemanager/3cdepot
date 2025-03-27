@@ -159,3 +159,31 @@ button:focus-visible {
   font-weight: 700;
   color: var(--primary-color);
 }
+
+:root {
+  --primary-color: #ff4500;
+  --primary-hover: #ff5722;
+}
+
+/* 强制覆盖Tailwind生成的品牌色 */
+.bg-brand {
+  background-color: #ff4500 !important;
+}
+.text-brand {
+  color: #ff4500 !important;
+}
+.hover\:bg-brand:hover {
+  background-color: #ff4500 !important;
+}
+.hover\:text-brand:hover {
+  color: #ff4500 !important;
+}
+.bg-brand\/90 {
+  background-color: rgba(255, 69, 0, 0.9) !important;
+}
+.hover\:bg-brand\/90:hover {
+  background-color: rgba(255, 69, 0, 0.9) !important;
+}
+.focus\:ring-brand:focus {
+  --tw-ring-color: #ff4500 !important;
+}
