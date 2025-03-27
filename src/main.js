@@ -2,11 +2,11 @@ import './style.css'
 import Alpine from 'alpinejs'
 import { router } from './router'
 import { state } from './store'
-import { initCart } from './modules/cart'
 
-// Initialize AlpineJS and store
+// Initialize AlpineJS
 window.Alpine = Alpine
 
+// Initialize store before starting Alpine
 document.addEventListener('alpine:init', () => {
   Alpine.store('cart', {
     cart: [],
@@ -50,14 +50,11 @@ document.addEventListener('alpine:init', () => {
   })
 })
 
+// Start Alpine after store initialization
 Alpine.start()
 
 // Initialize router after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  router.init()
-  // Make router available globally
-  window.router = router
-
   // Product data
   const products = [
     {
@@ -126,26 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ]
 
-  // Initialize state
+  // Initialize state with products
   state.products = products
 
-  // Initialize the application
-  const initApp = () => {
-    const contentDiv = document.querySelector('#content')
-    
-    // Initialize cart functionality
-    initCart()
-    
-    // Handle navigation
-    window.addEventListener('popstate', () => {
-      router.handleRoute()
-    })
-    
-    // Initial route handling
-    router.handleRoute()
-  }
+  // Make router available globally
+  window.router = router
 
-  initApp()
+  // Initialize router
+  router.init()
 })
 
 // Export state for other modules

@@ -18,32 +18,39 @@ export const router = {
     }
 
     // 处理初始路由
-    this.navigate(window.location.pathname)
+    this.handleRoute()
 
-    // 处理导航点击
+    // 添加点击事件监听器
     document.addEventListener('click', (e) => {
-      if (e.target.matches('a') && e.target.href) {
+      const link = e.target.closest('a')
+      if (link && link.href && link.href.startsWith(window.location.origin)) {
         e.preventDefault()
-        const url = new URL(e.target.href)
-        this.navigate(url.pathname)
+        this.navigate(new URL(link.href).pathname)
       }
     })
 
     // 处理浏览器后退/前进按钮
     window.addEventListener('popstate', () => {
-      this.navigate(window.location.pathname)
+      this.handleRoute()
     })
   },
 
-  navigate(pathname) {
-    window.history.pushState({}, '', pathname)
-    const route = routes[pathname] || routes['/']
-    this.render(route)
+  navigate(path) {
+    // 更新 URL
+    window.history.pushState({}, '', path)
+    // 处理路由
+    this.handleRoute()
   },
 
-  render(route) {
-    if (this.contentContainer) {
-      route(this.contentContainer)
+  handleRoute() {
+    const path = window.location.pathname
+    const render = routes[path] || routes['/']
+
+    if (render) {
+      render(this.contentContainer)
+    } else {
+      console.error('No route found for path:', path)
+      renderHome(this.contentContainer)
     }
   }
 }

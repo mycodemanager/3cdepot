@@ -7,16 +7,34 @@
     <title>3cdepot - Your Trusted Electronics Store</title>
     <script defer src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          container: {
+            center: true,
+            padding: {
+              DEFAULT: '1rem',
+              sm: '2rem',
+              lg: '4rem',
+              xl: '5rem',
+              '2xl': '6rem',
+            }, 
+          },
+        }
+      }
+    </script>
   </head>
   <body class="bg-gray-50">
     <div id="app" x-data="{ isCartOpen: false, isMenuOpen: false }">
       <!-- Navigation -->
-      <nav class="bg-white shadow-lg fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="bg-white shadow-lg  w-full z-50">
+        <div class="container max-w-7xl mx-auto">
           <div class="flex justify-between h-16">
             <div class="flex">
               <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="text-2xl font-bold text-brand">3cdepot</a>
+                <a href="/" class="flex items-center">
+                  <img src="/images/logo-text.png" alt="Logo" class="h-4 w-auto">
+                </a>
               </div>
               <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <a href="/" class="inline-flex items-center px-1 pt-1 text-gray-900">
@@ -33,7 +51,7 @@
                 </a>
               </div>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center space-x-4">
               <button 
                 @click="isCartOpen = true"
                 class="relative p-2 text-gray-600 hover:text-gray-900">
@@ -151,12 +169,14 @@
 
       <!-- Main Content -->
       <main class="pt-16">
-        <div id="content"></div>
+        <div class="container max-w-7xl mx-auto">
+          <div id="content"></div>
+        </div>
       </main>
 
       <!-- Footer -->
       <footer class="bg-gray-900 text-white mt-24">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="container max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
               <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Products</h3>

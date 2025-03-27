@@ -4,7 +4,7 @@ export function renderHome(content) {
   if (!content) return
 
   content.innerHTML = `
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen">
       <!-- Hero Section -->
       <div class="relative h-[80vh] bg-gray-900">
         <div class="absolute inset-0">
@@ -13,7 +13,7 @@ export function renderHome(content) {
           </video>
           <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent"></div>
         </div>
-        <div class="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+        <div class="relative h-full container max-w-7xl mx-auto flex flex-col justify-center">
           <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white max-w-3xl">
             Explore the World from Above
           </h1>
@@ -34,7 +34,7 @@ export function renderHome(content) {
 
       <!-- Category Navigation -->
       <div class="bg-white shadow-sm sticky top-16 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container max-w-7xl mx-auto">
           <div class="flex space-x-8 py-4">
             <a href="#all" class="text-brand font-medium">All Drones</a>
             <a href="#professional" class="text-gray-600 hover:text-brand">Professional</a>
@@ -45,7 +45,7 @@ export function renderHome(content) {
       </div>
 
       <!-- Featured Products -->
-      <div id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div id="products" class="container max-w-7xl mx-auto py-16">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Products</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           ${state.products.map(product => {
@@ -87,7 +87,7 @@ export function renderHome(content) {
 
       <!-- Features Section -->
       <div class="bg-white py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container max-w-7xl mx-auto">
           <div class="text-center max-w-3xl mx-auto">
             <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
               Why Choose Our Drones?
@@ -158,7 +158,7 @@ export function renderHome(content) {
           <img src="https://www-cdn.djiits.com/dps/6c74f1f03c6f3b4a29d7a1a1f7b1a0d1.jpg" alt="CTA Background" class="w-full h-full object-cover opacity-30">
           <div class="absolute inset-0 bg-gray-900/70 mix-blend-multiply"></div>
         </div>
-        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
+        <div class="relative container max-w-7xl mx-auto py-24">
           <div class="max-w-3xl">
             <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Ready to Take Flight?
