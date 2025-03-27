@@ -11,19 +11,35 @@
   <body class="bg-gray-50">
     <div id="app" x-data="{ isCartOpen: false, isMenuOpen: false }">
       <!-- Navigation -->
-      <nav class="bg-brand text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
+      <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-20">
             <div class="flex items-center">
-              <a href="/" class="text-2xl font-bold">3cdepot</a>
+              <a href="/" class="flex items-center">
+                <span class="text-3xl font-bold text-brand">3cdepot</span>
+              </a>
+              <div class="hidden lg:block ml-10">
+                <div class="flex items-baseline space-x-8">
+                  <a href="/" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Home</a>
+                  <a href="#drones" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Drones</a>
+                  <a href="#phones" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Phones</a>
+                  <a href="#laptops" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Laptops</a>
+                </div>
+              </div>
             </div>
-            <div class="hidden md:block">
-              <div class="ml-10 flex items-baseline space-x-4">
-                <a href="/" class="px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                <a href="/login" class="px-3 py-2 rounded-md text-sm font-medium">Login</a>
-                <a href="/register" class="px-3 py-2 rounded-md text-sm font-medium">Register</a>
-                <button @click="isCartOpen = true" class="px-3 py-2 rounded-md text-sm font-medium">
-                  Cart
+            <div class="hidden lg:block">
+              <div class="flex items-center space-x-6">
+                <a href="/login" class="text-gray-900 hover:text-brand text-sm font-medium">Login</a>
+                <a href="/register" class="text-gray-900 hover:text-brand text-sm font-medium">Register</a>
+                <button 
+                  @click="isCartOpen = true" 
+                  class="relative p-2 text-gray-900 hover:text-brand">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  <span id="cart-count" class="absolute -top-1 -right-1 bg-brand text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    0
+                  </span>
                 </button>
               </div>
             </div>
@@ -32,14 +48,43 @@
       </nav>
 
       <!-- Main Content -->
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main class="pt-20">
         <div id="content"></div>
       </main>
 
       <!-- Footer -->
-      <footer class="bg-gray-800 text-white mt-auto py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="text-center">
+      <footer class="bg-gray-900 text-white mt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold mb-4">About Us</h3>
+              <p class="text-gray-400">Your trusted source for premium electronics in Pakistan</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Categories</h3>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#drones" class="hover:text-white">Drones</a></li>
+                <li><a href="#phones" class="hover:text-white">Phones</a></li>
+                <li><a href="#laptops" class="hover:text-white">Laptops</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+              <ul class="space-y-2 text-gray-400">
+                <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                <li><a href="#" class="hover:text-white">Shipping Info</a></li>
+                <li><a href="#" class="hover:text-white">Returns</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-4">Payment Methods</h3>
+              <div class="flex space-x-4">
+                <img src="/images/easypaisa.png" alt="EasyPaisa" class="h-8">
+                <img src="/images/jazzcash.png" alt="JazzCash" class="h-8">
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
             <p>Copyright 2025 | Powered by Data Network Solutions</p>
           </div>
         </div>
