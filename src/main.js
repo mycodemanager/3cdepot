@@ -1,59 +1,10 @@
 import './style.css'
-import Alpine from 'alpinejs'
 import { router } from './router'
 import { state } from './store'
+import { initCart } from './modules/cart'
+import { renderHome } from './pages/Home'
 
-// Initialize AlpineJS
-window.Alpine = Alpine
-
-// Initialize store before starting Alpine
-document.addEventListener('alpine:init', () => {
-  Alpine.store('cart', {
-    cart: [],
-    addToCart(product) {
-      const existingItem = this.cart.find(item => item.id === product.id)
-      if (existingItem) {
-        existingItem.quantity += 1
-      } else {
-        this.cart.push({ ...product, quantity: 1 })
-      }
-      this.updateCartCount()
-    },
-
-    removeFromCart(productId) {
-      this.cart = this.cart.filter(item => item.id !== productId)
-      this.updateCartCount()
-    },
-
-    updateQuantity(productId, newQuantity) {
-      const item = this.cart.find(item => item.id === productId)
-      if (item) {
-        if (newQuantity > 0) {
-          item.quantity = newQuantity
-        } else {
-          this.removeFromCart(productId)
-        }
-        this.updateCartCount()
-      }
-    },
-
-    updateCartCount() {
-      const cartCount = document.getElementById('cart-count')
-      if (cartCount) {
-        cartCount.textContent = this.cart.reduce((total, item) => total + item.quantity, 0)
-      }
-    },
-
-    getCartTotal() {
-      return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0)
-    }
-  })
-})
-
-// Start Alpine after store initialization
-Alpine.start()
-
-// Initialize router after DOM is loaded
+// Initialize router and state after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Product data
   const products = [
@@ -126,12 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize state with products
   state.products = products
 
-  // Make router available globally
-  window.router = router
+  // Initialize cart
+  initCart()
+
+  // Render home page
+  const content = document.getElementById('content')
+  if (content) {
+    renderHome()
+  }
 
   // Initialize router
   router.init()
 })
-
-// Export state for other modules
-window.state = state
