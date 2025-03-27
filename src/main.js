@@ -3,7 +3,7 @@ import { router } from './router.js'
 import { state } from './store.js'
 import { initCart } from './modules/cart.js'
 import { initAuth } from './modules/auth.js'
-import { renderHome } from './pages/Home.js'
+import { renderHome } from './pages/home.js'
 
 // Initialize router and state after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

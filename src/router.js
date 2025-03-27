@@ -1,7 +1,7 @@
-import { renderHome } from './pages/Home.js'
-import { renderLogin } from './pages/Login.js'
-import { renderRegister } from './pages/Register.js'
-import { renderCheckout } from './pages/Checkout.js'
+import { renderHome } from './pages/home.js'
+import { renderLogin } from './pages/login.js'
+import { renderRegister } from './pages/register.js'
+import { renderCheckout } from './pages/checkout.js'
 import { isLoggedIn } from './modules/auth.js'
 
 class Router {
