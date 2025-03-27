@@ -1,56 +1,46 @@
 import { renderHome } from './pages/Home'
-import { renderCheckout } from './pages/checkout'
-import { renderLogin } from './pages/login'
+import { renderLogin } from './pages/Login'
+import { renderRegister } from './pages/Register'
+import { renderCheckout } from './pages/Checkout'
+import { isLoggedIn } from './modules/auth'
 
-const routes = {
-  '/': renderHome,
-  '/checkout': renderCheckout,
-  '/login': renderLogin
-}
-
-export const router = {
-  init() {
-    // 获取内容容器
-    this.contentContainer = document.querySelector('#content')
-    if (!this.contentContainer) {
-      console.error('Content container not found')
-      return
+class Router {
+  constructor() {
+    this.routes = {
+      '/': renderHome,
+      '/login': renderLogin,
+      '/register': renderRegister,
+      '/checkout': renderCheckout
     }
+  }
 
-    // 处理初始路由
+  init() {
+    window.addEventListener('popstate', () => this.handleRoute())
     this.handleRoute()
-
-    // 添加点击事件监听器
-    document.addEventListener('click', (e) => {
-      const link = e.target.closest('a')
-      if (link && link.href && link.href.startsWith(window.location.origin)) {
-        e.preventDefault()
-        this.navigate(new URL(link.href).pathname)
-      }
-    })
-
-    // 处理浏览器后退/前进按钮
-    window.addEventListener('popstate', () => {
-      this.handleRoute()
-    })
-  },
-
-  navigate(path) {
-    // 更新 URL
-    window.history.pushState({}, '', path)
-    // 处理路由
-    this.handleRoute()
-  },
+  }
 
   handleRoute() {
     const path = window.location.pathname
-    const render = routes[path] || routes['/']
-
-    if (render) {
-      render(this.contentContainer)
+    const renderer = this.routes[path]
+    
+    // 检查是否需要登录
+    if (path === '/checkout' && !isLoggedIn()) {
+      this.navigate('/login')
+      return
+    }
+    
+    if (renderer) {
+      const content = document.getElementById('content')
+      renderer(content)
     } else {
-      console.error('No route found for path:', path)
-      renderHome(this.contentContainer)
+      this.navigate('/')
     }
   }
+
+  navigate(path) {
+    window.history.pushState({}, '', path)
+    this.handleRoute()
+  }
 }
+
+export const router = new Router()

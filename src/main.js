@@ -2,6 +2,7 @@ import './style.css'
 import { router } from './router'
 import { state } from './store'
 import { initCart } from './modules/cart'
+import { initAuth } from './modules/auth'
 import { renderHome } from './pages/Home'
 
 // Initialize router and state after DOM is loaded
@@ -79,6 +80,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize cart
   initCart()
+
+  // Initialize auth
+  initAuth()
 
   // Render home page
   const content = document.getElementById('content')
