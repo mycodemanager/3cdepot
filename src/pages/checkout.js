@@ -52,17 +52,23 @@ export function renderCheckout() {
             <div class="space-y-4" id="payment-methods">
               <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:border-brand">
                 <input type="radio" name="payment-method" value="easypaisa" class="h-4 w-4 text-brand" checked>
-                <span class="ml-3">
-                  <span class="block text-sm font-medium text-gray-900">EasyPaisa</span>
-                  <span class="block text-sm text-gray-500">Pay using your EasyPaisa account</span>
-                </span>
+                <div class="ml-3 flex items-center">
+                  <img src="/images/easypaisa.png" alt="EasyPaisa" class="h-8 w-auto mr-3">
+                  <div>
+                    <span class="block text-sm font-medium text-gray-900">EasyPaisa</span>
+                    <span class="block text-sm text-gray-500">Pay using your EasyPaisa account</span>
+                  </div>
+                </div>
               </label>
               <label class="relative flex items-center p-4 border rounded-lg cursor-pointer hover:border-brand">
                 <input type="radio" name="payment-method" value="jazzcash" class="h-4 w-4 text-brand">
-                <span class="ml-3">
-                  <span class="block text-sm font-medium text-gray-900">JazzCash</span>
-                  <span class="block text-sm text-gray-500">Pay using your JazzCash account</span>
-                </span>
+                <div class="ml-3 flex items-center">
+                  <img src="/images/jazzcash.png" alt="JazzCash" class="h-8 w-auto mr-3">
+                  <div>
+                    <span class="block text-sm font-medium text-gray-900">JazzCash</span>
+                    <span class="block text-sm text-gray-500">Pay using your JazzCash account</span>
+                  </div>
+                </div>
               </label>
             </div>
           </div>
@@ -94,7 +100,7 @@ export function renderCheckout() {
     try {
       const result = await processPayment(paymentMethod)
       // Show success page
-      renderPaymentSuccess(result)
+      // renderPaymentSuccess(result)
     } catch (error) {
       // Show error message
       alert(error.message)
