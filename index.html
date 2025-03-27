@@ -11,37 +11,40 @@
   <body class="bg-gray-50">
     <div id="app" x-data="{ isCartOpen: false, isMenuOpen: false }">
       <!-- Navigation -->
-      <nav class="bg-white shadow-md sticky top-0 w-full z-50">
+      <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-20">
-            <!-- Left section with logo -->
-            <div class="flex items-center justify-start">
-              <a href="/" class="flex items-center">
-                <img src="/images/logo-text.png" alt="Logo" class="h-5">
-              </a>
-            </div>
-
-            <!-- Center section with navigation links -->
-            <div class="hidden lg:flex items-center justify-center flex-grow">
-              <div class="flex items-baseline space-x-8">
-                <a href="/" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Home</a>
-                <a href="#professional" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Professional</a>
-                <a href="#portable" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Portable</a>
-                <a href="#foldable" class="text-gray-900 hover:text-brand px-3 py-2 text-sm font-medium">Foldable</a>
+          <div class="flex justify-between h-16">
+            <div class="flex">
+              <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="text-2xl font-bold text-brand">3cdepot</a>
+              </div>
+              <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                <a href="/" class="inline-flex items-center px-1 pt-1 text-gray-900">
+                  Home
+                </a>
+                <a href="#professional" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                  Professional
+                </a>
+                <a href="#portable" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                  Portable
+                </a>
+                <a href="#foldable" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                  Foldable
+                </a>
               </div>
             </div>
-
-            <!-- Right section with auth and cart -->
-            <div class="flex items-center justify-end space-x-6">
-              <a href="/login" class="text-gray-900 hover:text-brand text-sm font-medium">Login</a>
-              <a href="/register" class="text-gray-900 hover:text-brand text-sm font-medium">Register</a>
+            <div class="flex items-center">
               <button 
-                @click="isCartOpen = true" 
-                class="relative p-2 text-gray-900 hover:text-brand">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                @click="isCartOpen = true"
+                class="relative p-2 text-gray-600 hover:text-gray-900">
+                <span class="sr-only">Shopping cart</span>
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <span id="cart-count" class="absolute -top-1 -right-1 bg-brand text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span id="cart-count" 
+                      x-text="$store.cart.cart ? $store.cart.cart.reduce((total, item) => total + item.quantity, 0) : 0"
+                      class="absolute -top-1 -right-1 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-brand rounded-full">
                   0
                 </span>
               </button>
@@ -50,82 +53,94 @@
         </div>
       </nav>
 
-      <!-- Main Content -->
-      <main class="pt-20">
-        <div id="content"></div>
-      </main>
-
-      <!-- Footer -->
-      <footer class="bg-gray-900 text-white mt-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 class="text-lg font-semibold mb-4">About Us</h3>
-              <p class="text-gray-400">Your trusted source for premium electronics in Pakistan</p>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-4">Categories</h3>
-              <ul class="space-y-2 text-gray-400">
-                <li><a href="#professional" class="hover:text-white">Professional</a></li>
-                <li><a href="#portable" class="hover:text-white">Portable</a></li>
-                <li><a href="#foldable" class="hover:text-white">Foldable</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
-              <ul class="space-y-2 text-gray-400">
-                <li><a href="#" class="hover:text-white">Contact Us</a></li>
-                <li><a href="#" class="hover:text-white">Shipping Info</a></li>
-                <li><a href="#" class="hover:text-white">Returns</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-lg font-semibold mb-4">Payment Methods</h3>
-              <div class="flex space-x-4">
-                <img src="/images/easypaisa.png" alt="EasyPaisa" class="h-8">
-                <img src="/images/jazzcash.png" alt="JazzCash" class="h-8">
-              </div>
-            </div>
-          </div>
-          <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>Copyright 2025 | Powered by Data Network Solutions</p>
-          </div>
-        </div>
-      </footer>
-
       <!-- Cart Sidebar -->
       <div x-show="isCartOpen" 
            class="fixed inset-0 overflow-hidden z-50" 
            style="display: none;">
         <div class="absolute inset-0 overflow-hidden">
+          <!-- Background overlay -->
           <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
                @click="isCartOpen = false"></div>
-          <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-            <div class="w-screen max-w-md">
-              <div class="h-full flex flex-col bg-white shadow-xl">
-                <div class="flex-1 py-6 overflow-y-auto px-4">
+          
+          <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div class="pointer-events-auto w-screen max-w-md">
+              <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                  <!-- Cart header -->
                   <div class="flex items-start justify-between">
                     <h2 class="text-lg font-medium text-gray-900">Shopping Cart</h2>
-                    <button @click="isCartOpen = false" class="text-gray-400 hover:text-gray-500">
-                      <span class="sr-only">Close panel</span>
-                      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
+                    <div class="ml-3 flex h-7 items-center">
+                      <button @click="isCartOpen = false" class="text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">Close panel</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
-                  <div class="mt-8" id="cart-items">
-                    <!-- Cart items will be inserted here -->
+
+                  <!-- Cart items -->
+                  <div class="mt-8">
+                    <div class="flow-root">
+                      <ul role="list" class="-my-6 divide-y divide-gray-200">
+                        <template x-if="!$store.cart.cart || $store.cart.cart.length === 0">
+                          <li class="py-6 text-center text-gray-500">
+                            Your cart is empty
+                          </li>
+                        </template>
+                        <template x-for="item in $store.cart.cart" :key="item.id">
+                          <li class="flex py-6">
+                            <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                              <img :src="item.image" :alt="item.name" class="h-full w-full object-cover object-center">
+                            </div>
+                            <div class="ml-4 flex flex-1 flex-col">
+                              <div>
+                                <div class="flex justify-between text-base font-medium text-gray-900">
+                                  <h3 x-text="item.name"></h3>
+                                  <p class="ml-4" x-text="'Rs. ' + (item.price * item.quantity).toLocaleString()"></p>
+                                </div>
+                              </div>
+                              <div class="flex flex-1 items-end justify-between text-sm">
+                                <div class="flex items-center space-x-2">
+                                  <button @click="$store.cart.updateQuantity(item.id, item.quantity - 1)"
+                                          class="text-gray-500 hover:text-gray-700">-</button>
+                                  <p class="text-gray-500" x-text="'Qty ' + item.quantity"></p>
+                                  <button @click="$store.cart.updateQuantity(item.id, item.quantity + 1)"
+                                          class="text-gray-500 hover:text-gray-700">+</button>
+                                </div>
+                                <button @click="$store.cart.removeFromCart(item.id)" 
+                                        class="font-medium text-brand hover:text-brand/90">Remove</button>
+                              </div>
+                            </div>
+                          </li>
+                        </template>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-                <div class="border-t border-gray-200 py-6 px-4">
+
+                <!-- Cart footer -->
+                <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
                   <div class="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p id="cart-total">Rs. 0</p>
+                    <p x-text="'Rs. ' + ($store.cart.cart ? $store.cart.getCartTotal() : 0).toLocaleString()"></p>
                   </div>
+                  <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div class="mt-6">
-                    <a href="/checkout" class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand hover:bg-brand/90">
+                    <a href="/checkout" 
+                       @click.prevent="isCartOpen = false; router.navigate('/checkout')"
+                       class="flex items-center justify-center rounded-md border border-transparent bg-brand px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-brand/90">
                       Checkout
                     </a>
+                  </div>
+                  <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+                    <p>
+                      or 
+                      <button @click="isCartOpen = false" class="font-medium text-brand hover:text-brand/90">
+                        Continue Shopping
+                        <span aria-hidden="true"> &rarr;</span>
+                      </button>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -133,6 +148,84 @@
           </div>
         </div>
       </div>
+
+      <!-- Main Content -->
+      <main class="pt-16">
+        <div id="content"></div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-900 text-white mt-24">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Products</h3>
+              <ul role="list" class="mt-4 space-y-4">
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Camera Drones
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Professional Drones
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Support</h3>
+              <ul role="list" class="mt-4 space-y-4">
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Contact Us
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+              <ul role="list" class="mt-4 space-y-4">
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Careers
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+              <ul role="list" class="mt-4 space-y-4">
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-base text-gray-300 hover:text-white">
+                    Terms of Service
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-8 border-t border-gray-800 pt-8">
+            <p class="text-base text-gray-400 text-center">
+              &copy; 2024 3cdepot. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
