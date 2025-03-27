@@ -1,93 +1,57 @@
-// 购物车状态管理
-document.addEventListener('alpine:init', () => {
-  Alpine.store('cart', {
-    items: [],
-    totalQuantity: 0,
-    totalPrice: 0,
-
-    addItem(productId) {
-      const existingItem = this.items.find(item => item.id === productId);
-      if (existingItem) {
-        existingItem.quantity++;
-      } else {
-        this.items.push({
-          id: productId,
-          quantity: 1,
-          ...products.find(p => p.id === productId)
-        });
-      }
-      this.updateTotals();
-    },
-
-    removeItem(productId) {
-      this.items = this.items.filter(item => item.id !== productId);
-      this.updateTotals();
-    },
-
-    updateTotals() {
-      this.totalQuantity = this.items.reduce((sum, item) => sum + item.quantity, 0);
-      this.totalPrice = this.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    },
-
-    clearCart() {
-      this.items = [];
-      this.updateTotals();
-    }
-  });
-});
+import { state } from '../store'
 
 export function initCart() {
-  // 购物车图标
-  const cartIcon = document.createElement('div');
-  cartIcon.className = 'fixed top-4 right-4 z-50';
-  cartIcon.innerHTML = `
-    <button @click="cartOpen = !cartOpen" class="bg-orange-500 text-white p-3 rounded-full shadow-lg hover:bg-orange-600 transition-colors">
-      🛒 <span x-text="$store.cart.totalQuantity" class="ml-1"></span>
-    </button>
-  `;
-  document.body.appendChild(cartIcon);
+  // Register Alpine store for cart functionality
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('state', state)
+  })
 
-  // 购物车侧边栏
-  const cartSidebar = document.createElement('div');
-  cartSidebar.className = 'fixed top-0 right-0 h-full w-96 bg-white shadow-xl z-50 transform transition-transform'
-    + ' translate-x-full';
-  cartSidebar.setAttribute('x-show', 'cartOpen');
-  cartSidebar.setAttribute('@click.away', 'cartOpen = false');
-  cartSidebar.innerHTML = `
-    <div class="p-6 h-full flex flex-col">
-      <h2 class="text-2xl font-bold mb-6">Shopping Cart</h2>
-      
-      <div class="flex-1 overflow-y-auto" x-data="{ get items() { return $store.cart.items } }">
-        <template x-for="item in items" :key="item.id">
-          <div class="flex items-center mb-4 pb-4 border-b">
-            <img :src="item.image" class="w-20 h-20 object-contain mr-4" alt="Product image">
-            <div class="flex-1">
-              <h3 class="font-semibold" x-text="item.name"></h3>
-              <div class="flex items-center justify-between mt-2">
-                <div class="flex items-center">
-                  <button @click="$store.cart.removeItem(item.id)" class="text-gray-500 hover:text-red-600">
-                    ×
-                  </button>
-                  <span class="mx-2" x-text="item.quantity"></span>
-                  <button @click="$store.cart.addItem(item.id)" class="text-orange-500">+</button>
-                </div>
-                <span class="font-semibold" x-text="'Rs. ' + (item.price * item.quantity).toLocaleString()"></span>
+  // Update cart items display whenever cart changes
+  const updateCartDisplay = () => {
+    const cartItems = document.querySelector('#cart-items')
+    const cartTotal = document.querySelector('#cart-total')
+    
+    if (cartItems && cartTotal) {
+      cartItems.innerHTML = state.cart.map(item => `
+        <div class="flex py-6 border-b">
+          <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md">
+            <img src="${item.image}" alt="${item.name}" class="h-full w-full object-cover">
+          </div>
+          <div class="ml-4 flex flex-1 flex-col">
+            <div>
+              <div class="flex justify-between text-base font-medium text-gray-900">
+                <h3>${item.name}</h3>
+                <p class="ml-4">Rs. ${(item.price * item.quantity).toLocaleString()}</p>
               </div>
             </div>
+            <div class="flex flex-1 items-end justify-between text-sm">
+              <div class="flex items-center space-x-2">
+                <button 
+                  @click="$store.state.updateQuantity(${item.id}, ${item.quantity - 1})"
+                  class="text-gray-500 hover:text-gray-700">-</button>
+                <span>Quantity: ${item.quantity}</span>
+                <button 
+                  @click="$store.state.updateQuantity(${item.id}, ${item.quantity + 1})"
+                  class="text-gray-500 hover:text-gray-700">+</button>
+              </div>
+              <button 
+                @click="$store.state.removeFromCart(${item.id})"
+                class="font-medium text-brand hover:text-brand/90">
+                Remove
+              </button>
+            </div>
           </div>
-        </template>
-      </div>
-
-      <div class="border-t pt-4">
-        <div class="flex justify-between text-xl font-bold mb-6">
-          <span>Total:</span>
-          <span x-text="'Rs. ' + $store.cart.totalPrice.toLocaleString()"></span>
         </div>
-        <button @click="window.location.href='/checkout'" class="w-full bg-orange-500 text-white py-3 rounded-md hover:bg-orange-600 transition-colors">
-          Proceed to Checkout
-        </button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(cartSidebar);
+      `).join('')
+
+      cartTotal.textContent = `Rs. ${state.getCartTotal().toLocaleString()}`
+    }
+  }
+
+  // Watch for cart changes
+  const observer = new MutationObserver(updateCartDisplay)
+  observer.observe(document.documentElement, {
+    subtree: true,
+    childList: true
+  })
 }

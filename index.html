@@ -1,15 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3cdepot - Your Trusted Electronics Store</title>
     <script defer src="https://unpkg.com/alpinejs@3.13.5/dist/cdn.min.js"></script>
-    <title>3cdepot</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <div id="app" class="font-sans bg-gray-50" x-data="{ cartOpen: false }"></div>
+  <body class="bg-gray-50">
+    <div id="app" x-data="{ isCartOpen: false, isMenuOpen: false }">
+      <!-- Navigation -->
+      <nav class="bg-brand text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <a href="/" class="text-2xl font-bold">3cdepot</a>
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a href="/" class="px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                <a href="/login" class="px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                <a href="/register" class="px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                <button @click="isCartOpen = true" class="px-3 py-2 rounded-md text-sm font-medium">
+                  Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div id="content"></div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white mt-auto py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <p>Copyright 2025 | Powered by Data Network Solutions</p>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Cart Sidebar -->
+      <div x-show="isCartOpen" 
+           class="fixed inset-0 overflow-hidden z-50" 
+           style="display: none;">
+        <div class="absolute inset-0 overflow-hidden">
+          <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
+               @click="isCartOpen = false"></div>
+          <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div class="w-screen max-w-md">
+              <div class="h-full flex flex-col bg-white shadow-xl">
+                <div class="flex-1 py-6 overflow-y-auto px-4">
+                  <div class="flex items-start justify-between">
+                    <h2 class="text-lg font-medium text-gray-900">Shopping Cart</h2>
+                    <button @click="isCartOpen = false" class="text-gray-400 hover:text-gray-500">
+                      <span class="sr-only">Close panel</span>
+                      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="mt-8" id="cart-items">
+                    <!-- Cart items will be inserted here -->
+                  </div>
+                </div>
+                <div class="border-t border-gray-200 py-6 px-4">
+                  <div class="flex justify-between text-base font-medium text-gray-900">
+                    <p>Subtotal</p>
+                    <p id="cart-total">Rs. 0</p>
+                  </div>
+                  <div class="mt-6">
+                    <a href="/checkout" class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand hover:bg-brand/90">
+                      Checkout
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

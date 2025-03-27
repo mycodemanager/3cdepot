@@ -1,31 +1,63 @@
 import './style.css'
-import { initProductListing } from './modules/product-list.js'
-import { initCart } from './modules/cart.js'
+import Alpine from 'alpinejs'
+import { router } from './router'
+import { initCart } from './modules/cart'
+import { state } from './store'
 
-// 初始化电商功能
-const app = document.querySelector('#app')
+// Initialize AlpineJS
+window.Alpine = Alpine
+Alpine.start()
 
-// 产品数据
+// Product data
 const products = [
   {
     id: 1,
-    name: 'Wireless Headphones',
-    price: 5999,
-    image: '/pay/JazzCash.png'
+    name: 'DJI Mavic 3 Pro',
+    price: 159999,
+    image: 'https://www-cdn.djiits.com/cms/uploads/ff6ae7f2efed6d80de477f6a634d6c4b.png',
+    description: 'Professional Drone with 4/3 CMOS Hasselblad Camera'
   },
   {
     id: 2,
-    name: 'Smart Watch',
-    price: 12999,
-    image: '/pay/easypaisa.png'
+    name: 'DJI Air 3S',
+    price: 89999,
+    image: 'https://www-cdn.djiits.com/cms/uploads/204e70db1a193ad14c14a61db633dca9.png',
+    description: 'Lightweight and Portable 4K Drone'
+  },
+  {
+    id: 3,
+    name: 'iPhone 15 Pro',
+    price: 299999,
+    image: '/images/iphone15pro.jpg',
+    description: 'Latest iPhone with A17 Pro chip'
+  },
+  {
+    id: 4,
+    name: 'MacBook Pro 14"',
+    price: 499999,
+    image: '/images/macbook-pro.jpg',
+    description: 'M3 Pro chip, 14-inch Liquid Retina XDR display'
   }
 ]
 
-// 初始化模块
-function initApp() {
-  initProductListing(app, products)
+// Initialize state
+state.products = products
+
+// Initialize the application
+const initApp = () => {
+  const contentDiv = document.querySelector('#content')
+  
+  // Initialize cart functionality
   initCart()
+  
+  // Handle navigation
+  window.addEventListener('popstate', () => {
+    router.handleRoute()
+  })
+  
+  // Initial route handling
+  router.handleRoute()
 }
 
-// 启动应用
+// Start the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', initApp)
