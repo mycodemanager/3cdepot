@@ -24,15 +24,13 @@ export default {
     },
   },
   safelist: [
-    'bg-brand',
-    'text-brand',
-    'hover:bg-brand',
-    'hover:text-brand',
-    'focus:ring-brand',
-    'bg-brand-50',
-    'hover:bg-brand-50',
-    'bg-brand-900',
-    'hover:bg-brand-900',
+    {
+      pattern: /(bg|text|border|ring)-brand(-[0-9]{1,3})?/,
+      variants: ['hover', 'focus', 'active']
+    },
+    {
+      pattern: /(bg|text|border|ring)-brand\/([0-9]|10)/
+    }
   ],
   plugins: [],
 }
