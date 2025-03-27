@@ -1,5 +1,5 @@
-import { getCartItems, getCartTotal, processPayment } from '../modules/cart'
-import { router } from '../router'
+import { getCartItems, getCartTotal, processPayment } from '../modules/cart.js'
+import { router } from '../router.js'
 
 export function renderCheckout() {
   const content = document.getElementById('content')

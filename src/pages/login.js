@@ -1,5 +1,5 @@
-import { login } from '../modules/auth'
-import { router } from '../router'
+import { login } from '../modules/auth.js'
+import { router } from '../router.js'
 
 export function renderLogin() {
   const content = document.getElementById('content')

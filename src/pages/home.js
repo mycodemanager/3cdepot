@@ -1,5 +1,5 @@
-import { state } from '../store'
-import { addToCart } from '../modules/cart'
+import { state } from '../store.js'
+import { addToCart } from '../modules/cart.js'
 
 export function renderHome(content) {
   if (!content) return

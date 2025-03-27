@@ -1,8 +1,8 @@
-import { renderHome } from './pages/Home'
-import { renderLogin } from './pages/Login'
-import { renderRegister } from './pages/Register'
-import { renderCheckout } from './pages/Checkout'
-import { isLoggedIn } from './modules/auth'
+import { renderHome } from './pages/Home.js'
+import { renderLogin } from './pages/Login.js'
+import { renderRegister } from './pages/Register.js'
+import { renderCheckout } from './pages/Checkout.js'
+import { isLoggedIn } from './modules/auth.js'
 
 class Router {
   constructor() {

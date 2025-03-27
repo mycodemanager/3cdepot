@@ -1,9 +1,9 @@
 import './style.css'
-import { router } from './router'
-import { state } from './store'
-import { initCart } from './modules/cart'
-import { initAuth } from './modules/auth'
-import { renderHome } from './pages/Home'
+import { router } from './router.js'
+import { state } from './store.js'
+import { initCart } from './modules/cart.js'
+import { initAuth } from './modules/auth.js'
+import { renderHome } from './pages/Home.js'
 
 // Initialize router and state after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

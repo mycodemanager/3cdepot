@@ -1,5 +1,5 @@
-import { register } from '../modules/auth'
-import { router } from '../router'
+import { register } from '../modules/auth.js'
+import { router } from '../router.js'
 
 export function renderRegister() {
   const content = document.getElementById('content')
