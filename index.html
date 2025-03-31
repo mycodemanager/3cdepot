@@ -1,252 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <title>3cdepot - Your Trusted Electronics Store</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: '#00A0E9'
-            }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <title>3cdepot - Your Trusted Electronics Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#00A0E9'
+          }
+        },
+        container: {
+          center: true,
+          padding: {
+            DEFAULT: '1rem',
+            sm: '2rem',
+            lg: '4rem',
+            xl: '5rem',
+            '2xl': '6rem',
           },
-          container: {
-            center: true,
-            padding: {
-              DEFAULT: '1rem',
-              sm: '2rem',
-              lg: '4rem',
-              xl: '5rem',
-              '2xl': '6rem',
-            },
-          },
-        }
+        },
       }
-    </script>
-    <style>
-      .animate-fadeIn {
-        animation: fadeIn 0.3s ease-out;
+    }
+  </script>
+  <style>
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
       }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .cart-backdrop {
-        transition: opacity 0.3s ease-out;
-      }
-      .cart-panel {
-        transition: transform 0.3s ease-out;
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50">
-    <div id="app">
-      <!-- Navigation -->
-      <nav class="bg-white shadow-lg w-full z-50">
-        <div class="container max-w-7xl mx-auto">
-          <div class="flex justify-between h-16">
-            <div class="flex">
-              <div class="flex-shrink-0 flex items-center">
-                <a href="/" class="flex items-center">
-                  <img src="/images/logo-text.png" alt="Logo" class="h-4 w-auto">
-                </a>
-              </div>
-              <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <a href="/" class="inline-flex items-center px-1 pt-1 text-gray-900">
-                  Home
-                </a>
-                <a href="#professional" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
-                  Professional
-                </a>
-                <a href="#portable" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
-                  Portable
-                </a>
-                <a href="#fpv" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
-                  FPV
-                </a>
-              </div>
+    }
+
+    .cart-backdrop {
+      transition: opacity 0.3s ease-out;
+    }
+
+    .cart-panel {
+      transition: transform 0.3s ease-out;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <div id="app">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg w-full z-50">
+      <div class="container max-w-7xl mx-auto">
+        <div class="flex justify-between h-16">
+          <div class="flex">
+            <div class="flex-shrink-0 flex items-center">
+              <a href="/" class="flex items-center">
+                <img src="/images/logo-text.png" alt="Logo" class="h-4 w-auto">
+              </a>
             </div>
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <button data-cart-open class="relative p-2 text-gray-600 hover:text-gray-900 transition-colors">
-                  <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  <span id="cart-count" class="absolute -top-1 -right-1 bg-brand text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transition-all duration-300">
-                    0
-                  </span>
-                </button>
-              </div>
-              <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <a href="/login" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
-                  Sign in
-                </a>
-                <a href="/register" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800">
-                  Sign up
-                </a>
-              </div>
-              <div class="sm:hidden">
-                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="p-2 text-gray-600 hover:text-gray-900">
-                  <svg class="h-6 w-6 block" id="menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                  <svg class="h-6 w-6 hidden" id="menu-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+            <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+              <a href="/" class="inline-flex items-center px-1 pt-1 text-gray-900">
+                Home
+              </a>
+              <a href="#professional" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                Professional
+              </a>
+              <a href="#portable" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                Portable
+              </a>
+              <a href="#fpv" class="inline-flex items-center px-1 pt-1 text-gray-500 hover:text-gray-900">
+                FPV
+              </a>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <button data-cart-open class="relative p-2 text-gray-600 hover:text-gray-900 transition-colors">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span id="cart-count"
+                  class="absolute -top-1 -right-1 bg-brand text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center transition-all duration-300">
+                  0
+                </span>
+              </button>
+            </div>
+            <div class="hidden sm:flex sm:items-center sm:ml-6">
+              <a href="/login" class="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">
+                Sign in
+              </a>
+              <a href="/register"
+                class="ml-3 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-900 hover:bg-gray-800">
+                Sign up
+              </a>
+            </div>
+            <div class="sm:hidden">
+              <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                class="p-2 text-gray-600 hover:text-gray-900">
+                <svg class="h-6 w-6 block" id="menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg class="h-6 w-6 hidden" id="menu-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="sm:hidden hidden">
-          <div class="pt-2 pb-3 space-y-1">
-            <a href="/" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 bg-gray-50">Home</a>
-            <a href="#professional" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Professional</a>
-            <a href="#portable" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Portable</a>
-            <a href="#fpv" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">FPV</a>
-          </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="sm:hidden hidden">
+        <div class="pt-2 pb-3 space-y-1">
+          <a href="/" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-900 bg-gray-50">Home</a>
+          <a href="#professional"
+            class="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Professional</a>
+          <a href="#portable"
+            class="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">Portable</a>
+          <a href="#fpv"
+            class="block pl-3 pr-4 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50">FPV</a>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <!-- Cart Sidebar -->
-      <div id="cart-sidebar" class="fixed inset-0 overflow-hidden z-50 hidden">
-        <div class="absolute inset-0 overflow-hidden">
-          <!-- Backdrop -->
-          <div class="cart-backdrop absolute inset-0 bg-black bg-opacity-50 opacity-0"></div>
-          
-          <!-- Cart panel -->
-          <div class="cart-panel pointer-events-auto absolute inset-y-0 right-0 flex max-w-full pl-10 transform translate-x-full">
-            <div class="w-screen max-w-md">
-              <div class="h-full flex flex-col bg-white shadow-xl">
-                <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
-                  <div class="flex items-start justify-between">
-                    <h2 class="text-2xl font-bold text-gray-900">Shopping Cart</h2>
-                    <div class="ml-3 h-7 flex items-center">
-                      <button data-cart-close class="bg-white rounded-md text-gray-400 hover:text-gray-500">
-                        <span class="sr-only">Close panel</span>
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed inset-0 overflow-hidden z-50 hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <!-- Backdrop -->
+        <div class="cart-backdrop absolute inset-0 bg-black bg-opacity-50 opacity-0"></div>
 
-                  <div class="mt-8">
-                    <div class="flow-root">
-                      <div id="cart-items" class="divide-y divide-gray-200"></div>
-                    </div>
+        <!-- Cart panel -->
+        <div
+          class="cart-panel pointer-events-auto absolute inset-y-0 right-0 flex max-w-full pl-10 transform translate-x-full">
+          <div class="w-screen max-w-md">
+            <div class="h-full flex flex-col bg-white shadow-xl">
+              <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
+                <div class="flex items-start justify-between">
+                  <h2 class="text-2xl font-bold text-gray-900">Shopping Cart</h2>
+                  <div class="ml-3 h-7 flex items-center">
+                    <button data-cart-close class="bg-white rounded-md text-gray-400 hover:text-gray-500">
+                      <span class="sr-only">Close panel</span>
+                      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
 
-                <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
-                  <div class="flex justify-between text-base font-medium text-gray-900">
-                    <p>Total</p>
-                    <p id="cart-total">Rs. 0</p>
+                <div class="mt-8">
+                  <div class="flow-root">
+                    <div id="cart-items" class="divide-y divide-gray-200"></div>
                   </div>
-                  <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                  <div class="mt-6">
-                    <a href="/checkout" class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800">
-                      Checkout
-                    </a>
-                  </div>
-                  <div class="mt-6 flex justify-center text-sm text-center text-gray-500">
-                    <p>
-                      or 
-                      <button data-cart-close class="font-medium text-gray-900 hover:text-gray-800">
-                        Continue Shopping
-                      </button>
-                    </p>
-                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                <div class="flex justify-between text-base font-medium text-gray-900">
+                  <p>Total</p>
+                  <p id="cart-total">Rs. 0</p>
+                </div>
+                <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                <div class="mt-6">
+                  <a href="/checkout"
+                    class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800">
+                    Checkout
+                  </a>
+                </div>
+                <div class="mt-6 flex justify-center text-sm text-center text-gray-500">
+                  <p>
+                    or
+                    <button data-cart-close class="font-medium text-gray-900 hover:text-gray-800">
+                      Continue Shopping
+                    </button>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- Main Content -->
-      <div id="content"></div>
-        </div>
-      </main>
-
-      <!-- Footer -->
-      <footer class="bg-gray-900 text-white mt-24">
-        <div class="container max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Products</h3>
-              <ul role="list" class="mt-4 space-y-4">
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Camera Drones
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Professional Drones
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Support</h3>
-              <ul role="list" class="mt-4 space-y-4">
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Contact Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
-              <ul role="list" class="mt-4 space-y-4">
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Careers
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
-              <ul role="list" class="mt-4 space-y-4">
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a href="#" class="text-base text-gray-300 hover:text-white">
-                    Terms of Service
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="mt-8 border-t border-gray-800 pt-8">
-            <p class="text-base text-gray-400 text-center">
-              &copy; 2024 3cdepot. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+    <!-- Main Content -->
+    <div id="content"></div>
+  </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white mt-24">
+    <div class="container max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Products</h3>
+          <ul role="list" class="mt-4 space-y-4">
+            <li>
+              <a href="#" class="text-base text-gray-300 hover:text-white">
+                Camera Drones
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-base text-gray-300 hover:text-white">
+                Professional Drones
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Support</h3>
+          <ul role="list" class="mt-4 space-y-4">
+            <li>
+              <a href="#" class="text-base text-gray-300 hover:text-white">
+                Help Center
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-base text-gray-300 hover:text-white">
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+          <ul role="list" class="mt-4 space-y-4">
+            <li>
+              <a href="#" class="text-base text-gray-300 hover:text-white">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-base text-gray-300 hover:text-white">
+                Careers
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Payment methods</h3>
+          <div class="payment-methods" style="display: flex;gap: 20px;">
+            <img style="width: 50px; border-radius: 5px;" src="/public/images/easypaisa.png" alt="Payment methods" />
+            <img style="width: 50px;border-radius: 5px;" src="/public/images/jazzcash.png" alt="Payment methods" />
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-gray-800 pt-8">
+        <p class="text-base text-gray-400 text-center">
+          &copy; Copyright © 2025 | Powered by Data Network Solutions
+        </p>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
