@@ -1,8 +1,8 @@
-import { state } from '../store.js'
-import { addToCart } from '../modules/cart.js'
+import { state } from "../store.js";
+import { addToCart } from "../modules/cart.js";
 
 export function renderHome(content) {
-  if (!content) return
+  if (!content) return;
 
   content.innerHTML = `
     <div class="min-h-screen">
@@ -36,12 +36,6 @@ export function renderHome(content) {
       <!-- Category Navigation -->
       <div class="bg-white shadow-sm sticky top-16 z-40">
         <div class="container max-w-7xl mx-auto">
-          <div class="flex space-x-8 py-4">
-            <a href="#all" class="text-brand font-medium">All Drones</a>
-            <a href="#professional" class="text-gray-600 hover:text-brand">Professional</a>
-            <a href="#portable" class="text-gray-600 hover:text-brand">Portable</a>
-            <a href="#fpv" class="text-gray-600 hover:text-brand">FPV</a>
-          </div>
         </div>
       </div>
 
@@ -49,14 +43,15 @@ export function renderHome(content) {
       <div id="products" class="container max-w-7xl mx-auto py-16">
         <h2 class="text-3xl font-bold text-gray-900 mb-8">Featured Products</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          ${state.products.map(product => {
-            const productJson = JSON.stringify(product).replace(/"/g, '&quot;')
-            return `
+          ${state.products
+      .map((product) => {
+        const productJson = JSON.stringify(product).replace(/"/g, "&quot;");
+        console.log(state.products);
+
+        return `
               <div class="group bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="aspect-w-1 aspect-h-1 bg-gray-200 relative overflow-hidden">
-                  <img src="${product.image}" 
-                       alt="${product.name}" 
-                       class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
+                  <img src="${product.image}"  alt="${product.name}"  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300">
                   <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <button 
                       onclick="window.cart.addToCart(${productJson})"
@@ -66,23 +61,18 @@ export function renderHome(content) {
                   </div>
                 </div>
                 <div class="p-6">
-                  <div class="mb-2">
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand/10 text-brand">
-                      ${product.category}
-                    </span>
-                  </div>
+         
                   <h3 class="text-xl font-bold text-gray-900 mb-2">${product.name}</h3>
                   <p class="text-gray-500 mb-4 line-clamp-2">${product.description}</p>
                   <div class="flex items-center justify-between">
-                    <span class="text-2xl font-bold text-brand">Rs. ${product.price.toLocaleString()}</span>
-                    <a href="/product/${product.id}" class="text-sm font-medium text-brand hover:text-brand/90">
-                      View Details
-                    </a>
+                    <span class="text-2xl font-bold text-brand">Rs. ${product.price}</span>
+         
                   </div>
                 </div>
               </div>
-            `
-          }).join('')}
+            `;
+      })
+      .join("")}
         </div>
       </div>
 
@@ -176,10 +166,10 @@ export function renderHome(content) {
         </div>
       </div>
     </div>
-  `
+  `;
 }
 
 function handleAddToCart(product) {
   // Add your logic here to handle the add to cart functionality
-  console.log(product)
+  console.log(product);
 }
