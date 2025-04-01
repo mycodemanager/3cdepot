@@ -26,9 +26,6 @@ export function renderHome(content) {
             <a href="#products" class="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-brand hover:bg-brand/90 transition-colors">
               Shop Now
             </a>
-            <a href="#learn-more" class="inline-flex items-center px-8 py-4 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-colors">
-              Learn More
-            </a>
           </div>
         </div>
       </div>
