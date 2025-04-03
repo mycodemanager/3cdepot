@@ -10,215 +10,215 @@ document.addEventListener('DOMContentLoaded', () => {
   // Product data
   const products = [
     {
-      id: 1,
-      name: 'FlyMaster X500 Pro',
-      price: 38999,
-      image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJvbmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60',
-      description: 'Advanced GPS Drone with 4K Camera, Obstacle Avoidance and 30-minute Flight Time'
+      "id": 1,
+      "name": "FlyMaster X500 Pro",
+      "price": 38999,
+      "image": "https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJvbmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      "description": "Advanced GPS Drone with 4K Camera, Obstacle Avoidance and 30-minute Flight Time"
     },
     {
-      id: 2,
-      name: 'DJI Tello EDU',
-      price: 34999,
-      image: 'https://m.media-amazon.com/images/I/71cigy7VX6L.jpg',
-      description: 'Educational Drone with HD Camera and SDK for Programming'
+      "id": 2,
+      "name": "DJI Mini 2",
+      "price": 42999,
+      "image": "https://m.media-amazon.com/images/I/51PpwI26rXL._AC_UF894,1000_QL80_.jpg",
+      "description": "Ultralight and Foldable Drone with 4K Camera, 12MP Photos, 31-minute Flight Time, 10km HD Video Transmission"
     },
     {
-      id: 3,
-      name: 'Holy Stone HS720',
-      price: 49500,
-      image: 'https://m.media-amazon.com/images/I/71svU-MgG+L._AC_UF894,1000_QL80_.jpg',
-      description: 'Foldable GPS Drone with 4K UHD Camera and 26 Minutes Flight Time'
+      "id": 3,
+      "name": "IZI Sky 4K",
+      "price": 32999,
+      "image": "https://i.ytimg.com/vi/ZCDRiN7rLvk/maxresdefault.jpg",
+      "description": "Made in India Budget 4K Drone with GPS, Return Home Function, and 25-minute Flight Time"
     },
     {
-      id: 4,
-      name: 'ATTOP X-Pack 5 Pro',
-      price: 32999,
-      image: 'https://m.media-amazon.com/images/I/71O90hq0utL.jpg',
-      description: 'Foldable Drone with 4K Camera and Gesture Control'
+      "id": 4,
+      "name": "QuadAir Pro",
+      "price": 18999,
+      "image": "https://cdn.mos.cms.futurecdn.net/rUyQ4fJZe9FGmFLSXREMQc-1200-80.png",
+      "description": "Foldable Drone with 1080p HD Camera, Follow Me Mode, 20-minute Battery Life"
     },
     {
-      id: 5,
-      name: 'Ryze Tech Tello Premium',
-      price: 30999,
-      image: 'https://m.media-amazon.com/images/I/41thostxAtL.jpg',
-      description: 'Beginner Drone with 720p Camera and 13-minute Flight Time'
+      "id": 5,
+      "name": "SkyExplorer C70",
+      "price": 27499,
+      "image": "https://ae01.alicdn.com/kf/Sddd5a52f99754979833ec3b3b4c5c3c5B.jpg_640x640q90.jpg",
+      "description": "Professional Drone with 3-Axis Gimbal, 4K HDR Camera, 28 Minutes Flight Time, and Long Range Control"
     },
     {
-      id: 6,
-      name: 'Contixo F30',
-      price: 46500,
-      image: 'https://m.media-amazon.com/images/I/61LOp686d4L.jpg',
-      description: 'Foldable Drone with 4K UHD Camera and Carrying Case'
+      "id": 6,
+      "name": "DJI Mavic Mini",
+      "price": 34990,
+      "image": "https://m.media-amazon.com/images/I/51eae+6sQoL.jpg",
+      "description": "249g Ultralight Drone, 2.7K Camera, 30min Flight Time, 4km HD Video Transmission"
     },
     {
-      id: 7,
-      name: 'Holy Stone HS175D',
-      price: 43999,
-      image: 'https://i5.walmartimages.com/asr/704f6118-c530-44cc-bdd9-b317bf3f9fbb.99da458356b0dde8181c187018b0c737.png',
-      description: 'GPS Drone with 4K Camera and Brushless Motors'
+      "id": 7,
+      "name": "Deer LU3 MAX",
+      "price": 21500,
+      "image": "https://sc04.alicdn.com/kf/He71507ab4e284d408a0c87f21b60a876n.jpg",
+      "description": "GPS FPV Quadcopter with 8K Camera, 25mins Flight Time, and Brushless Motors"
     },
     {
-      id: 8,
-      name: 'Ruko F11 Pro',
-      price: 47999,
-      image: 'https://i5-richmedia.walmartimages.com/asr-rm/bf199e1d-e45a-47df-bcc0-a7140f07eb1d_360_merchant_manual_6.png',
-      description: 'Foldable GPS Drone with 4K HD Camera and 30 Minutes Flight Time'
+      "id": 8,
+      "name": "Holy Stone HS720E",
+      "price": 29999,
+      "image": "https://i.ytimg.com/vi/DPYuHH7pWs4/hq720.jpg",
+      "description": "EIS 4K Drone with UHD Camera, 5G WiFi Transmission, GPS, 26min Flight Time"
     },
     {
-      id: 9,
-      name: 'Potensic D88',
-      price: 45999,
-      image: 'https://vader-prod.s3.amazonaws.com/1627336091-419rg9xMUXL._SL500_.jpg',
-      description: 'Foldable Drone with 4K Camera, GPS Return Home and Follow Me Functions'
+      "id": 9,
+      "name": "Eagle Pro X47",
+      "price": 45999,
+      "image": "https://www.jouav.com/wp-content/uploads/2022/07/cw-40-5.jpg",
+      "description": "Professional Aerial Photography Drone with 6K Camera, 35min Flight Time, and Advanced Obstacle Sensing"
     },
     {
-      id: 10,
-      name: 'Holy Stone HS440',
-      price: 38999,
-      image: 'https://m.media-amazon.com/images/I/71cigy7VX6L.jpg',
-      description: 'Foldable FPV Drone with 1080P HD Camera and Carrying Case'
+      "id": 10,
+      "name": "Mini Foldable Drone S8",
+      "price": 6999,
+      "image": "https://i.ytimg.com/vi/DPYuHH7pWs4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDTqM_JXgg2JbUf3TMb8wgq93zGKA",
+      "description": "Portable Mini Drone with 720p Camera, Altitude Hold, Headless Mode, 12min Flight Time"
     },
     {
-      id: 11,
-      name: 'DEERC DE22',
-      price: 40500,
-      image: 'https://m.media-amazon.com/images/I/71O90hq0utL.jpg',
-      description: 'GPS Drone with 2.7K Camera and Smart Return to Home'
+      "id": 11,
+      "name": "Contixo F24 Pro",
+      "price": 24500,
+      "image": "https://m.media-amazon.com/images/I/71aBg0U5r+L.jpg",
+      "description": "GPS Drone with 4K UHD Camera, 5G WiFi Transmission, 30min Flight Time, Follow Me Mode"
     },
     {
-      id: 12,
-      name: 'Potensic Dreamer Pro',
-      price: 49900,
-      image: 'https://m.media-amazon.com/images/I/71svU-MgG+L._AC_UF894,1000_QL80_.jpg',
-      description: 'Professional Drone with 4K Camera and 3-Axis Gimbal for Videography'
+      "id": 13,
+      "name": "Ruko F11 Pro",
+      "price": 27999,
+      "image": "https://media.licdn.com/dms/image/v2/D4E12AQGDlY9nbLpv6w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1731683931130?e=2147483647&v=beta&t=93_XzDMR8151SB2VmHYUEkH2D25M2i0pB9m-9oUNaSo",
+      "description": "4K Drone with Brushless Motors, 30min Flight Time, 1.2km Video Transmission, Return Home"
     },
     {
-      id: 13,
-      name: 'Contixo F35',
-      price: 38500,
-      image: 'https://i5.walmartimages.com/asr/704f6118-c530-44cc-bdd9-b317bf3f9fbb.99da458356b0dde8181c187018b0c737.png',
-      description: 'GPS Foldable Drone with 4K UHD Camera and 30-minute Flight Time'
+      "id": 14,
+      "name": "VIVITAR VTI Phoenix",
+      "price": 18900,
+      "image": "https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJvbmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      "description": "Foldable GPS Drone with 4K Camera, Follow Me, 22min Flight Time, Carrying Case"
     },
     {
-      id: 14,
-      name: 'Holy Stone HS165',
-      price: 32500,
-      image: 'https://i5-richmedia.walmartimages.com/asr-rm/bf199e1d-e45a-47df-bcc0-a7140f07eb1d_360_merchant_manual_6.png',
-      description: 'Foldable GPS Drone with 2K HD Camera and Optical Flow Positioning'
+      "id": 15,
+      "name": "EMAX Tinyhawk II",
+      "price": 13499,
+      "image": "https://m.media-amazon.com/images/I/51PpwI26rXL.jpg",
+      "description": "FPV Racing Drone with HD Camera, Ready-to-Fly Package, Indoor and Outdoor Flight"
     },
     {
-      id: 15,
-      name: 'DEERC D20 Pro',
-      price: 35999,
-      image: 'https://m.media-amazon.com/images/I/61LOp686d4L.jpg',
-      description: 'Mini Drone with 4K Camera, Gestures Selfie, and Auto Hover Function'
+      "id": 16,
+      "name": "DEERC D20 Mini",
+      "price": 5499,
+      "image": "https://i.ytimg.com/vi/ZCDRiN7rLvk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCK8GRBgo9YlUSJuPpHfCdho_Ie1Q",
+      "description": "Pocket Drone with 720p Camera, Altitude Hold, Headless Mode, 10min Flight Time"
     },
     {
-      id: 16,
-      name: 'Potensic D85',
-      price: 47999,
-      image: 'https://m.media-amazon.com/images/I/41thostxAtL.jpg',
-      description: '5G WiFi FPV Drone with 2K Camera and GPS Return Home Function'
+      "id": 17,
+      "name": "Potensic T25",
+      "price": 19999,
+      "image": "https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHJvbmV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
+      "description": "GPS Drone with 1080p Camera, Return Home, Follow Me Mode, 18min Flight Time"
     },
     {
-      id: 17,
-      name: 'SNAPTAIN SP7100',
-      price: 42999,
-      image: 'https://vader-prod.s3.amazonaws.com/1627336091-419rg9xMUXL._SL500_.jpg',
-      description: 'GPS Drone with 4K UHD Camera and Follow Me Mode'
+      "id": 18,
+      "name": "ProDrone X1800",
+      "price": 36999,
+      "image": "https://m.media-amazon.com/images/I/71e6Zl+gHJL.jpg",
+      "description": "Professional 4K Drone with 3-Axis Gimbal, 5.8G FPV Transmission, 30min Flight Time, Advanced GNSS"
     },
     {
-      id: 18,
-      name: 'Contixo F24 Pro',
-      price: 39500,
-      image: 'https://m.media-amazon.com/images/I/71svU-MgG+L._AC_UF894,1000_QL80_.jpg',
-      description: 'GPS Drone with 4K UHD Camera and Brushless Motors'
+      "id": 21,
+      "name": "JJRC X12 Aurora",
+      "price": 31499,
+      "image": "https://cdn.mos.cms.futurecdn.net/rUyQ4fJZe9FGmFLSXREMQc-1200-80.png",
+      "description": "5G WiFi FPV Drone with 4K Camera, GPS, 25min Flight Time, 1.2km Control Distance"
     },
     {
-      id: 19,
-      name: 'Holy Stone HS700D',
-      price: 48500,
-      image: 'https://m.media-amazon.com/images/I/71cigy7VX6L.jpg',
-      description: 'GPS Drone with 2K FHD Camera and 22-minute Flight Time'
+      "id": 22,
+      "name": "Snaptain SP510",
+      "price": 15900,
+      "image": "https://ae01.alicdn.com/kf/Sddd5a52f99754979833ec3b3b4c5c3c5B.jpg_640x640q90.jpg",
+      "description": "Foldable GPS Drone with 2.7K Camera, Follow Me, Circle Fly, 30min Flight Time"
     },
     {
-      id: 20,
-      name: 'DEERC DE25',
-      price: 34999,
-      image: 'https://m.media-amazon.com/images/I/71O90hq0utL.jpg',
-      description: 'Foldable Drone with 4K Camera and Optical Flow Positioning'
+      "id": 23,
+      "name": "Parrot Anafi",
+      "price": 49999,
+      "image": "https://m.media-amazon.com/images/I/51eae+6sQoL.jpg",
+      "description": "4K HDR Camera Drone with 180° Vertical Tilt Gimbal, 25min Flight Time, 4km Range"
     },
     {
-      id: 21,
-      name: 'Ruko U11Pro',
-      price: 44999,
-      image: 'https://i5.walmartimages.com/asr/704f6118-c530-44cc-bdd9-b317bf3f9fbb.99da458356b0dde8181c187018b0c737.png',
-      description: 'GPS Drone with 4K Camera and 52-minute Flight Time (2 Batteries)'
+      "id": 24,
+      "name": "XiaomiMI Drone 4K",
+      "price": 34999,
+      "image": "https://www.jouav.com/wp-content/uploads/2022/07/cw-40-5.jpg",
+      "description": "4K UHD Camera Drone with 3-Axis Gimbal, Vision Positioning, 27min Flight Time"
     },
     {
-      id: 22,
-      name: 'Autel Robotics EVO Nano',
-      price: 49999,
-      image: 'https://m.media-amazon.com/images/I/61LOp686d4L.jpg',
-      description: 'Foldable Drone with 4K Camera and 28-minute Flight Time'
+      "id": 25,
+      "name": "Autel Robotics EVO Nano",
+      "price": 47999,
+      "image": "https://m.media-amazon.com/images/I/71aBg0U5r+L.jpg",
+      "description": "Ultra-light Sub-249g Drone with 4K Camera, 28min Flight Time, RYYB Sensor"
     },
     {
-      id: 23,
-      name: 'Hubsan Zino Pro Plus',
-      price: 47500,
-      image: 'https://i5-richmedia.walmartimages.com/asr-rm/bf199e1d-e45a-47df-bcc0-a7140f07eb1d_360_merchant_manual_6.png',
-      description: 'Foldable Drone with 4K/30fps Camera and 3-Axis Gimbal'
+      "id": 26,
+      "name": "ZLRC SG906 Pro 2",
+      "price": 18999,
+      "image": "https://i.ytimg.com/vi/ZCDRiN7rLvk/maxresdefault.jpg",
+      "description": "GPS Drone with 4K Camera, 3-Axis Gimbal, 5G WiFi FPV, 26min Flight Time"
     },
     {
-      id: 24,
-      name: 'Potensic D58',
-      price: 36999,
-      image: 'https://m.media-amazon.com/images/I/41thostxAtL.jpg',
-      description: 'GPS Drone with 1080P Camera and 36-minute Flight Time (2 Batteries)'
+      "id": 27,
+      "name": "Holystone HS110G",
+      "price": 14499,
+      "image": "https://m.media-amazon.com/images/I/51PpwI26rXL._AC_UF894,1000_QL80_.jpg",
+      "description": "GPS FPV Drone with 1080P Camera, Tap Fly, Follow Me, 16min Flight Time"
     },
     {
-      id: 25,
-      name: 'XIAOMI FIMI X8 SE',
-      price: 49800,
-      image: 'https://vader-prod.s3.amazonaws.com/1627336091-419rg9xMUXL._SL500_.jpg',
-      description: 'Foldable 4K Camera Drone with 3-Axis Gimbal and 35-minute Flight Time'
+      "id": 28,
+      "name": "Zeraxa Z65",
+      "price": 38499,
+      "image": "https://sc04.alicdn.com/kf/He71507ab4e284d408a0c87f21b60a876n.jpg",
+      "description": "Professional 6K Camera Drone with 3-Axis Stabilization, 35min Flight Time, 12km Range"
     },
     {
-      id: 26,
-      name: 'JJRC X12',
-      price: 41999,
-      image: 'https://m.media-amazon.com/images/I/71svU-MgG+L._AC_UF894,1000_QL80_.jpg',
-      description: 'GPS Drone with 4K Camera and 3-Axis Gimbal for Aerial Photography'
+      "id": 30,
+      "name": "Bugs 16 Pro",
+      "price": 21999,
+      "image": "https://i.ytimg.com/vi/DPYuHH7pWs4/hq720.jpg",
+      "description": "GPS Drone with 4K Camera, 5G WiFi FPV, EIS Anti-shake, 25min Flight Time"
     },
     {
-      id: 27,
-      name: 'Holy Stone HS550',
-      price: 39999,
-      image: 'https://m.media-amazon.com/images/I/71cigy7VX6L.jpg',
-      description: 'GPS Drone with 4K UHD Camera and 52-minute Flight Time (2 Batteries)'
+      "id": 33,
+      "name": "FIMI X8 SE",
+      "price": 39999,
+      "image": "https://m.media-amazon.com/images/I/71e6Zl+gHJL.jpg",
+      "description": "4K Camera Drone with 3-Axis Mechanical Gimbal, 35min Flight Time, 8km Range"
     },
     {
-      id: 28,
-      name: 'SIMREX X20',
-      price: 33999,
-      image: 'https://m.media-amazon.com/images/I/71O90hq0utL.jpg',
-      description: 'GPS Drone with 4K Camera and Brushless Motors'
+      "id": 34,
+      "name": "JJRC X11",
+      "price": 16990,
+      "image": "https://i.ytimg.com/vi/ZCDRiN7rLvk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCK8GRBgo9YlUSJuPpHfCdho_Ie1Q",
+      "description": "5G WiFi FPV GPS Drone with 2K Camera, 2-Axis Gimbal, 20min Flight Time"
     },
     {
-      id: 29,
-      name: 'MJX Bugs 4W',
-      price: 31999,
-      image: 'https://i5.walmartimages.com/asr/704f6118-c530-44cc-bdd9-b317bf3f9fbb.99da458356b0dde8181c187018b0c737.png',
-      description: 'Foldable GPS Drone with 2K Camera and Optical Flow Positioning'
+      "id": 35,
+      "name": "Contixo F35",
+      "price": 28999,
+      "image": "https://media.licdn.com/dms/image/v2/D4E12AQGDlY9nbLpv6w/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1731683931130?e=2147483647&v=beta&t=93_XzDMR8151SB2VmHYUEkH2D25M2i0pB9m-9oUNaSo",
+      "description": "GPS Drone with 4K UHD Camera, 32min Flight Time, 1.5km Range, Carrying Case"
     },
     {
-      id: 30,
-      name: 'UPair Two',
-      price: 44999,
-      image: 'https://i5-richmedia.walmartimages.com/asr-rm/bf199e1d-e45a-47df-bcc0-a7140f07eb1d_360_merchant_manual_6.png',
-      description: '4K Drone with 3-Axis Gimbal and 1KM Flight Range'
-    }
+      "id": 36,
+      "name": "Potensic D88",
+      "price": 33499,
+      "image": "https://ae01.alicdn.com/kf/Sddd5a52f99754979833ec3b3b4c5c3c5B.jpg_640x640q90.jpg",
+      "description": "5G WiFi FPV Drone with 4K Camera, Brushless Motors, 20min Flight Time, 1.5km Range"
+    },
   ]
 
   // Initialize state with products
